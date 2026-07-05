@@ -8,7 +8,7 @@ def get_inputs():
             volts = float(input("Enter the the Voltage: "))
             length = float(input("Enter the length of the run in metres: "))
             phase = int(input("Enter phase (1 for single-phse, 3 for 3-phase): "))
-            if current > 0 and volts > 0 and length > 0 and (phase == 1 or 3):
+            if current > 0 and volts > 0 and length > 0 and (phase == (1 or 3)):
                 return current, volts, length, phase
             print("Numbers must be greater than 0")
 
