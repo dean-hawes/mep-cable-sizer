@@ -7,11 +7,12 @@ def get_inputs():
             current = float(input("Enter the load in Amps: "))
             volts = float(input("Enter the the Voltage: "))
             length = float(input("Enter the length of the run in metres: "))
-            phase = int(input("Enter phase (1 for single-phse, 3 for 3-phase): "))
-            if current > 0 and volts > 0 and length > 0 and (phase == (1 or 3)):
+            phase = int(input("Enter phase (1 for single-phase, 3 for 3-phase): "))
+            if current > 0 and volts > 0 and length > 0 and (phase in (1, 3)):
                 return current, volts, length, phase
+            elif phase not in (1, 3):
+                raise ValueError
             print("Numbers must be greater than 0")
-
         except ValueError:
             print("Please enter valid numbers.")
 
