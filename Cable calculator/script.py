@@ -1,10 +1,17 @@
 import pandas as pd
 
 def get_inputs():
-    current = float(input("Enter the load in Amps: "))
-    volts = float(input("Enter the the Voltage: "))
-    length = float(input("Enter the length of the run in metres: "))
-    return [current, volts, length]
+    while True:
+        try:
+            current = float(input("Enter the load in Amps: "))
+            volts = float(input("Enter the the Voltage: "))
+            length = float(input("Enter the length of the run in metres: "))
+            if current > 0 and volts > 0 and length > 0:
+                return current, volts, length
+            print("Numbers must be greater than 0")
+
+        except ValueError:
+            print("Please enter valid numbers.")
 
 def get_OhmsPer_M(current, volts, length):
     volt_drop = volts * 0.03
@@ -26,7 +33,6 @@ df.rename(columns={'Copper_OhmsPerKm': 'Copper_OhmsPer_m', 'Aluminum_OhmsPerKm':
 df['Copper_OhmsPer_m'] = df['Copper_OhmsPer_m'] / 1000
 df['Aluminum_OhmsPer_m'] = df['Aluminum_OhmsPer_m'] / 1000
 
-inputs = get_inputs()
-current, voltage, length = inputs
-ohm_perM_for_run = get_OhmsPer_M(current, voltage, length)
+current, volts, length = get_inputs()
+ohm_perM_for_run = get_OhmsPer_M(current, volts, length)
 get_minimum_cable(ohm_perM_for_run, df)
