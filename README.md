@@ -15,15 +15,16 @@ An automated, data-driven engineering tool written in Python that sizes electric
 The application evaluates allowable circuit resistance parameters by rearranging fundamental AC thermal and physical voltage-drop equations.
 
 ### Single-Phase Formula
-$R_{\text{wire}}$ = ${V_{\text{drop\_allowance}}$ / (2 * $I$ * $L$)
+$R_{\text{wire}}$ = ${V_{\text{drop}}$ / (2 * $I$ * $L$)
 
 ### Three-Phase Formula
-$R_{\text{wire}}$ = ${V_{\text{drop\_allowance}}$ / (sqrt(3) * $I$ * $L$)
+$R_{\text{wire}}$ = ${V_{\text{drop}}$ / (sqrt(3) * $I$ * $L$)
 
 Where:
 - $I$ = Design load current (Amps)
 - $L$ = Length of the circuit run (Meters)
 - $R_{\text{wire}}$ = Maximum allowable conductor impedance ($\Omega/m$)
+- ${V_{\text{drop}}$ = 3% volt drop
 
 ---
 
