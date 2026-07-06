@@ -31,14 +31,34 @@ def get_minimum_cable(ohmPer_m, dataframe):
         print("No cable large enough in current database")
     else:
         min_cable = safe_cables.iloc[0]['CrossSection_mm2']
-        print(f"Minimum cable required to stay within 3% voltage drop is {min_cable}mm")
+        print("------------------------------------------------------------------------",
+            f"\nMinimum cable required to stay within 3% voltage drop is {min_cable}mm",
+            "\n------------------------------------------------------------------------")
 
+def exit_prompt():
+    while True:
+        try:
+            user_input = int(input("Enter '1' For another cable run calculation or '2' to exit: "))
+            if user_input == 1:
+                return True
+            elif user_input == 2:
+                return False
+            else:
+                raise ValueError
+        except ValueError:
+            print("Please enter either '1' to calculate another cable run or '2' to exit: ")
 
 df = pd.read_csv('Cable calculator/copper&aluminium_values.csv')
 df.rename(columns={'Copper_OhmsPerKm': 'Copper_OhmsPer_m', 'Aluminum_OhmsPerKm': 'Aluminum_OhmsPer_m'}, inplace=True)
 df['Copper_OhmsPer_m'] = df['Copper_OhmsPer_m'] / 1000
 df['Aluminum_OhmsPer_m'] = df['Aluminum_OhmsPer_m'] / 1000
 
-current, volts, length, phase = get_inputs()
-ohm_perM_for_run = get_OhmsPer_M(current, volts, length, phase)
-get_minimum_cable(ohm_perM_for_run, df)
+while True:
+    current, volts, length, phase = get_inputs()
+    ohm_perM_for_run = get_OhmsPer_M(current, volts, length, phase)
+    get_minimum_cable(ohm_perM_for_run, df)
+    continue_prompt = exit_prompt()
+    if continue_prompt == True:
+        continue
+    elif continue_prompt == False:
+        break
