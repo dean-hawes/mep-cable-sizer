@@ -15,10 +15,10 @@ An automated, data-driven engineering tool written in Python that sizes electric
 The application evaluates allowable circuit resistance parameters by rearranging fundamental AC thermal and physical voltage-drop equations.
 
 ### Single-Phase Formula
-$$R_{\text{wire}} = \frac{V_{\text{drop\_allowance}}}{2 \cdot I \cdot L}$$
+$R_{\text{wire}}$ = ${V_{\text{drop\_allowance}}$ / (2 * $I$ * $L$)
 
 ### Three-Phase Formula
-$$R_{\text{wire}} = \frac{V_{\text{drop\_allowance}}}{\sqrt{3} \cdot I \cdot L}$$
+$R_{\text{wire}}$ = ${V_{\text{drop\_allowance}}$ / (sqrt(3) * $I$ * $L$)
 
 Where:
 - $I$ = Design load current (Amps)
@@ -39,7 +39,7 @@ Where:
 
 1. Clone the repository to your local system:
    ```bash
-   git clone [https://github.com/dean-hawes/mep-cable-sizer/tree/main/Cable%20calculator](https://github.com/dean-hawes/mep-cable-sizer/tree/main/Cable%20calculator)
+   git clone [https://github.com/dean-hawes/mep-cable-sizer](https://github.com/dean-hawes/mep-cable-sizer)
 
 2. Ensure pandas is installed:
     ```bash
